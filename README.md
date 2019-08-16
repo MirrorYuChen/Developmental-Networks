@@ -12,3 +12,10 @@
 ## http://www.cse.msu.edu/ei/
 ## http://www.cse.msu.edu/~weng/
 ## https://www.youtube.com/channel/UC3GAHYCt3VBh8KNi7tvT67w 
+
+## Some related codes:
+## https://github.com/ZejiaZheng/multiresolutionDN
+## https://github.com/wux0080/contest-with-neuron-position
+## https://github.com/huyanmingtoby/multiresolutionDN
+## https://github.com/pppoe/IPCA
+
