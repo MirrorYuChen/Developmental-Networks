@@ -11,4 +11,4 @@
 ## **Referrence:**
 ## http://www.cse.msu.edu/ei/
 ## http://www.cse.msu.edu/~weng/
-## https://www.youtube.com/channel/UC3GAHYCt3VBh8KNi7tvT67w  Brain Mind Talks
+## https://www.youtube.com/channel/UC3GAHYCt3VBh8KNi7tvT67w 
