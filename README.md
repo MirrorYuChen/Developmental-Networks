@@ -1,5 +1,5 @@
 # Developmental-Networks
-Some Research C++ Codes on DN,  following the works of Juyang Weng professor
+Some Researches C++ Codes on DN,  following the works of Juyang Weng professor
 
 ## TODO:
 ### CCIPCA:Candid Covariance-free Incremental Principal Component Analysis
