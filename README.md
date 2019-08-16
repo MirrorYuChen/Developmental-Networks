@@ -7,3 +7,7 @@
 ### **MILN:Cortex inspired sensorimotor pathway**
 ### **DN-1: WWN1-WWN9(where-what-networks)**
 ### **DN-2:**
+
+## **Referrence:**
+http://www.cse.msu.edu/ei/
+http://www.cse.msu.edu/~weng/
