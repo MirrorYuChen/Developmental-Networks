@@ -50,7 +50,7 @@ int getAllFiles(const std::string& filePath, std::vector<std::string>& filesVec)
 }
 
 int main() {
-	std::string folder = "../data/yale";
+	std::string folder = "../../../data/yale";
 	std::vector<std::string> filesVec;
 	if (getAllFiles(folder, filesVec) != 0) {
 		std::cout << "get folder: " << folder << "failed." << std::endl;

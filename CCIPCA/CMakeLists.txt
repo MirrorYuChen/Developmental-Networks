@@ -15,13 +15,13 @@ endif()
 
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/3rdLibs/eigen339
+    ${CMAKE_CURRENT_SOURCE_DIR}/../3rdLibs/eigen339
 )
 
 set(LIBS "")
 if (CMAKE_SYSTEM_NAME MATCHES "Windows")
-    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/3rdLibs/opencv/include)
-    set(LIBS ${CMAKE_CURRENT_SOURCE_DIR}/3rdLibs/opencv/lib/opencv_world3416.lib)
+    include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../3rdLibs/opencv/include)
+    set(LIBS ${CMAKE_CURRENT_SOURCE_DIR}/../3rdLibs/opencv/lib/opencv_world3416.lib)
 else(CMAKE_SYSTEM_NAME MATCHES "Windows")
     find_package(OpenCV3 REQUIRED)
     include_directories(${OpenCV_INCLUDE_DIRS})

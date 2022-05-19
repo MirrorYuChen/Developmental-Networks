@@ -5,7 +5,7 @@
 时间|更新内容
 --|--
 20220515 | 1.上传IHDR的vs19 X64库和ubuntu 20.04(gcc 9.3.0)上编译的库及测试用例；
-20220519 | 1.上传CCIPCA源码，依赖于opencv(可视化显示)和Eigen(内部运算)；
+20220519 | 1.上传CCIPCA源码，依赖于opencv(可视化显示)和Eigen(内部运算)；2.调整项目结构，把共有依赖库移除特定子文件夹；
 
 ## **2.TODO:**
  - [x] **CCILCA:A single-level model as the general-purpose building block of brain networks**
