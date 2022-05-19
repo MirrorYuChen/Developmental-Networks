@@ -3,6 +3,7 @@ project(CCIPCA)
 
 option(USE_CPP11 "Enable C++ 11 feature" ON)
 option(BUILD_TEST "Build test examples" ON)
+option(BUILD_SHARED_LIBS "Enable to build shared library" ON)
 
 if(USE_CPP11)
     set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -std=gnu99")
@@ -27,10 +28,19 @@ else(CMAKE_SYSTEM_NAME MATCHES "Windows")
     set(LIBS ${OpenCV_LIBS})
 endif(CMAKE_SYSTEM_NAME MATCHES "Windows")
 
-add_library(${PROJECT_NAME} 
-    ${CMAKE_CURRENT_SOURCE_DIR}/include/CCIPCA.h
-    ${CMAKE_CURRENT_SOURCE_DIR}/source/CCIPCA.cc
-)
+if (BUILD_SHARED_LIBS)
+    add_library(${PROJECT_NAME} SHARED
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/CCIPCA.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/source/CCIPCA.cc
+    )
+else (BUILD_SHARED_LIBS)
+    add_library(${PROJECT_NAME} STATIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include/CCIPCA.h
+        ${CMAKE_CURRENT_SOURCE_DIR}/source/CCIPCA.cc
+    )
+endif(BUILD_SHARED_LIBS)
 
-add_executable(Example ${CMAKE_CURRENT_SOURCE_DIR}/examples/main.cc )
-target_link_libraries(Example ${LIBS} ${PROJECT_NAME})
+if (BUILD_TEST)
+    add_executable(Example ${CMAKE_CURRENT_SOURCE_DIR}/examples/main.cc )
+    target_link_libraries(Example ${LIBS} ${PROJECT_NAME})
+endif(BUILD_TEST)
