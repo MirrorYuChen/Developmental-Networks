@@ -1,7 +1,14 @@
+/*
+ * @Description: 
+ * @Date: 2022-05-19 20:02:25
+ * @Author: chenjingyu
+ * @LastEditTime: 2022-05-19 20:02:43
+ * @FilePath: \Developmental-Networks\CCILCA\example\main.cc
+ */
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include "CCIPCA.h"
+#include "CCILCA.h"
 
 #if defined(_MSC_VER)
 #   include <Windows.h>
@@ -58,53 +65,53 @@ int main() {
 	}
 
 	std::cout << "filesVec size: " << filesVec.size() << std::endl;
-	mirror::CCIPCA* ccipca = new mirror::CCIPCA(15, 100 * 100);
-	for (int iter = 0; iter < 10; ++iter) {
+	mirror::CCILCA* ccilca = new mirror::CCILCA(15, 100 * 100);
+	for (int iter = 0; iter < 100; ++iter) {
 		for (int i = 0; i < filesVec.size(); ++i) {
 			cv::Mat img = cv::imread(folder + "/" + filesVec[i], 0);
 			img.convertTo(img, CV_32FC1);
 			float* fX = reinterpret_cast<float*>(img.data);
-			ccipca->Update(fX);
+			ccilca->Update(fX);
 		}
 	}
-	auto eigenVecs = ccipca->getEigenVectors();
+	auto lobeVecs = ccilca->getLobeVectors();
 
 	cv::Mat result = cv::Mat(100 * 3, 100 * 5, CV_8U);
-	float* eigen = new float[100 * 100];
-	cv::Mat imgEigen = cv::Mat(100, 100, CV_8U);
-	std::cout << "eigenVec size: " << eigenVecs.size() << std::endl;
-	for (int i = 0; i < eigenVecs.size(); ++i) {
-		auto eigenVec = eigenVecs[i];
-		memset(eigen, 0.0, 100 * 100 * sizeof(float));
-		memcpy(eigen, eigenVec.data(), 100 * 100 * sizeof(float));
+	float* lobe = new float[100 * 100];
+	cv::Mat imgLobe = cv::Mat(100, 100, CV_8U);
+	std::cout << "eigenVec size: " << lobeVecs.size() << std::endl;
+	for (int i = 0; i < lobeVecs.size(); ++i) {
+		auto eigenVec = lobeVecs[i];
+		memset(lobe, 0.0, 100 * 100 * sizeof(float));
+		memcpy(lobe, eigenVec.data(), 100 * 100 * sizeof(float));
 		float minVal = FLT_MAX, maxVal = -FLT_MAX;
 		for (int j = 0; j < 100 * 100; ++j) {
-			if (eigen[j] < minVal) {
-				minVal = eigen[j];
+			if (lobe[j] < minVal) {
+				minVal = lobe[j];
 			}
-			if (eigen[j] > maxVal) {
-				maxVal = eigen[j];
+			if (lobe[j] > maxVal) {
+				maxVal = lobe[j];
 			}
 		}
 		for (int j = 0; j < 100 * 100; ++j) {
 			int x = j % 100;
 			int y = j / 100;
-			int val = 255 * (eigen[j] - minVal) / (maxVal - minVal);
-			imgEigen.at<uchar>(y, x) = val > 255 ? 255 : val;
+			int val = 255 * (lobe[j] - minVal) / (maxVal - minVal);
+			imgLobe.at<uchar>(y, x) = val > 255 ? 255 : val;
 		}
 		int beginX = i % 5;
 		int beginY = i / 5;
-		imgEigen.copyTo(result(cv::Rect(beginX * 100, beginY * 100, 100, 100)));
-		cv::imwrite(std::to_string(i) + ".jpg", imgEigen);
+		imgLobe.copyTo(result(cv::Rect(beginX * 100, beginY * 100, 100, 100)));
+		cv::imwrite(std::to_string(i) + ".jpg", imgLobe);
 	}
-	delete[] eigen;
+	delete[] lobe;
 
 	cv::imshow("result", result);
 	cv::waitKey(0);
 
-	if (ccipca != NULL) {
-		delete ccipca;
-		ccipca = NULL;
+	if (ccilca != NULL) {
+		delete ccilca;
+		ccilca = NULL;
 	}
 	return 0;
 }
