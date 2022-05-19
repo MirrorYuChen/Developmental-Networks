@@ -2,7 +2,7 @@
  * @Description: 
  * @Date: 2022-05-19 10:35:10
  * @Author: chenjingyu
- * @LastEditTime: 2022-05-19 10:35:26
+ * @LastEditTime: 2022-05-19 11:05:09
  * @FilePath: \Developmental-Networks\CCIPCA\source\CCIPCA.cc
  */
 #include "CCIPCA.h"
@@ -12,7 +12,7 @@ namespace mirror {
 CCIPCA::CCIPCA(int topK, int xDim) :
 	topK_(topK), xDim_(xDim) {
 	step_ = 1;
-	eigenVecs_ = RowMajorMatrix::Random(topK, xDim);
+	eigenVecs_ = RowMajorMatrix::Random(topK_, xDim_);
 	mean_ = eigenVecs_.colwise().mean();
 	eigenVecs_.rowwise() -= mean_;
 }

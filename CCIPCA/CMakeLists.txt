@@ -27,7 +27,10 @@ else(CMAKE_SYSTEM_NAME MATCHES "Windows")
     set(LIBS ${OpenCV_LIBS})
 endif(CMAKE_SYSTEM_NAME MATCHES "Windows")
 
-add_library(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/source/CCIPCA.cc)
+add_library(${PROJECT_NAME} 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include/CCIPCA.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/source/CCIPCA.cc
+)
 
 add_executable(Example ${CMAKE_CURRENT_SOURCE_DIR}/examples/main.cc )
 target_link_libraries(Example ${LIBS} ${PROJECT_NAME})
