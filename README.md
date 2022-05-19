@@ -23,4 +23,5 @@
 ## https://github.com/wux0080/contest-with-neuron-position
 ## https://github.com/huyanmingtoby/multiresolutionDN
 ## https://github.com/pppoe/IPCA
+## https://github.com/wux0080/Phoneme-synthesis-and-maze-navigation-based-on-DN-2
 
