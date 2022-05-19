@@ -5,10 +5,9 @@
 时间|更新内容
 --|--
 20220515 | 1.上传IHDR的vs19 X64库和ubuntu 20.04(gcc 9.3.0)上编译的库及测试用例；
-
+20220519 | 1.上传CCIPCA源码，依赖于opencv(可视化显示)和Eigen(内部运算)；
 
 ## **2.TODO:**
- - [x] **CCIPCA:Candid Covariance-free Incremental Principal Component Analysis**
  - [x] **CCILCA:A single-level model as the general-purpose building block of brain networks**
  - [x] **MILN:Cortex inspired sensorimotor pathway**
  - [x] **DN-1: WWN1-WWN9(where-what-networks)**
